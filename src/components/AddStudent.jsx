@@ -21,15 +21,15 @@ export default function AddStudent() {
     setOpen(false);
   };
   const postStaffUrl = `https://65375e4bbb226bb85dd320ac.mockapi.io/studentManagement`;
-  const currDate = new Date();
+  
 
   const formik = useFormik({
     initialValues: {
       name: "",
-      address: "",
-      age: "",
-      avatar: "",
-      createAt: currDate,
+      dateofbirth: "",
+      Gender: "",
+      Class: "",
+      Image: "",
     },
     onSubmit: (values) => {
       values.createAt = new Date(values.createAt);
@@ -42,8 +42,9 @@ export default function AddStudent() {
     },
     validationSchema: Yup.object({
       name: Yup.string().required("Require").min(3, "Must be more Than 2 Character"),
-      DateOfBirth: Yup.date().required("Require").typeError("Please Enter DATE"),
-      Gender: Yup.number().integer().required("Require").typeError("Please Enter A Valid Number"),
+      dateofbirth: Yup.date().required('Date Of Birth is required'),
+      Class: Yup.string().required("Require"),
+      Gender:Yup.bool().required('Gender is required'),
       Image: Yup.string().url().required("Require").typeError("Avatar must be a valid Url"),
     }),
   });
@@ -65,17 +66,25 @@ export default function AddStudent() {
           <TextField
             label="Date Of Birth"
             name="Date Of Birth"
-            value={formik.values.DateOfBirth}
+            value={formik.values.dateofbirth}
             onChange={formik.handleChange}
           />
-          {formik.errors.address && (<Typography variant="caption" color="red">{formik.errors.address}</Typography>)}
+          {formik.errors.dateofbirth && (<Typography variant="caption" color="red">{formik.errors.dateofbirth}</Typography>)}
+          
+          <TextField 
+          label="class"
+          name="class"
+          value={formik.values.Class}
+          />
+          {formik.errors.Class && (<Typography variant="caption" color="red">{formik.errors.Class}</Typography>)}
+
           <TextField
             label="gender"
             name="gender"
             value={formik.values.gender}
             onChange={formik.handleChange}
           />
-          {formik.errors.age && (<Typography variant="caption" color="red">{formik.errors.age}</Typography>)}
+          {formik.errors.Gender && (<Typography variant="caption" color="red">{formik.errors.Gender}</Typography>)}
 
           <TextField
             label="Image"
@@ -83,7 +92,7 @@ export default function AddStudent() {
             value={formik.values.Image}
             onChange={formik.handleChange}
           />
-          {formik.errors.avatar && (<Typography variant="caption" color="red">{formik.errors.avatar}</Typography>)}
+          {formik.errors.Image && (<Typography variant="caption" color="red">{formik.errors.Image}</Typography>)}
 
 
 

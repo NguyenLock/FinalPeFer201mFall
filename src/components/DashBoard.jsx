@@ -97,7 +97,7 @@ export default function DashBoard() {
             <Avatar align="left" alt="Remy Sharp" src={student.image} />
 
           </TableCell>
-          <TableCell align="left">{student.gender}</TableCell>
+          <TableCell align="left">{student.gender === true ? 'Male' : 'Female'}</TableCell>
           <TableCell align="left">{student.class}</TableCell>
           <TableCell align="left">
             <Stack direction="row" spacing={3}>
@@ -133,7 +133,7 @@ export default function DashBoard() {
   <DialogContent>
     <DialogContentText id="alert-dialog-description">
       <Alert severity="warning">
-        <AlertTitle>Are you sure to delete this staff ?</AlertTitle>
+        <AlertTitle>Are you sure to delete this Student ?</AlertTitle>
       </Alert>
     </DialogContentText>
   </DialogContent>
@@ -157,7 +157,7 @@ export default function DashBoard() {
   <DialogContent>
     <DialogContentText id="alert-dialog-description">
       <Alert severity="success">
-        <AlertTitle>Delete Staff Successfully</AlertTitle>
+        <AlertTitle>Delete Student Successfully</AlertTitle>
       </Alert>
     </DialogContentText>
   </DialogContent>

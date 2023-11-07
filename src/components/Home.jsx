@@ -57,6 +57,11 @@ function Home(){
                   <Typography gutterBottom variant="h5" component="div">
                     class: {student.class}
                   </Typography>
+
+                  <Typography gutterBottom variant="h5" component="div">
+                    Gender: {student.gender === true ? 'Male' : 'Female'}
+                  </Typography>
+
                   <Typography gutterBottom variant="h5" component="div">
                     feedback: {student.feedback}
                   </Typography>
